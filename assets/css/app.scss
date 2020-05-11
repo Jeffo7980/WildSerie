@@ -1,0 +1,8 @@
+$body-bg: #111;
+$body-color: #333;
+
+$theme-colors:(
+  "custom-color": #900
+);
+
+@import "node_modules/bootstrap/scss/bootstrap";
