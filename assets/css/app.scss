@@ -1,4 +1,9 @@
 $body-bg: #111;
 $body-color: #a4a5a3;
 
+$theme-colors:(
+  'primary': #ff0031,
+  'secondary': #147600
+);
+
 @import "~bootstrap/scss/bootstrap";
