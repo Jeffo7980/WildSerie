@@ -1,9 +1,10 @@
-$body-bg: #111;
-$body-color: #a4a5a3;
+$body-bg: #a4a5a3;
+$body-color: #000000;
 
 $theme-colors:(
-  'primary': #ff0031,
-  'secondary': #147600
+  'primary': #000000,
+  'secondary': #a50817,
+  'cardvue': #a4a5a3
 );
 
 @import "~bootstrap/scss/bootstrap";
