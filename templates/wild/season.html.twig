@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <section>
+        {% for episode in seasons.episodes %}
+            <div class="card text-dark bg-cardvue m-3 p-3">
+                <h5 class="card-header bg-dark text-white">Episode n° {{ episode.number }}</h5>
+                <div class="card-body bg-cardvue">
+                    <h5 class="card-title text-black">{{episode.title}}</h5>
+                    <p class="card-text text-black">{{episode.synopsis}}</p>
+                    <a class="btn btn-secondary" href="{{ path('wild_episode', { 'id' : episode.id } ) }}">En savoir plus</a>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+    <a class="btn btn-dark m-3" href="{{ path('wild_program_slug', {'slug' : seasons.program.title}) }}">
+        Retour à la série {{ seasons.program.title }}
+    </a>
+
+{% endblock %}
