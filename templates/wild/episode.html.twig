@@ -16,7 +16,10 @@
         </div>
     </section>
     <a class="btn btn-dark bg-secondary" href="{{ path('wild_season', {'seasonId' : episode.season.id}) }}">
-        Retour
+        Retour vers la saison
+    </a>
+    <a class="btn btn-dark bg-secondary" href="{{ path('wild_program_slug', {'slug' : program.title}) }}">
+    Retour vers la série
     </a>
 
 {% endblock %}
