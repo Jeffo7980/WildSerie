@@ -4,9 +4,12 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
-use App\Entity\Episode;
+use App\Form\CategoryType;
+use App\Form\ProgramSearchType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,10 +21,17 @@ use Symfony\Component\Routing\Annotation\Route;
 Class WildController extends AbstractController
 {
     /**
+     * Show all row from Program's entity
+     *
      * @Route("/", name="index")
+     * @param Request $request
+     * @return Response A response instance
      */
     public function index() : Response
     {
+        $form = $this->createForm(
+            ProgramSearchType::class ,null, ['method' => Request::METHOD_GET]);
+
         $programs = $this->getDoctrine()
             ->getRepository(Program::class)
             ->findAll();
@@ -31,7 +41,9 @@ Class WildController extends AbstractController
             );
         }
         return $this->render('wild/index.html.twig', [
-            'programs' => $programs]
+                'programs' => $programs,
+                'form' => $form->createView(),
+            ]
         );
     }
 
