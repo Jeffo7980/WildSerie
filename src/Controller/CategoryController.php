@@ -1,16 +1,14 @@
 <?php
 
-
 namespace App\Controller;
 
 use App\Entity\Category;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Form\FormView;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Program;
 use App\Form\CategoryType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 class CategoryController extends AbstractController
 {
@@ -19,15 +17,34 @@ class CategoryController extends AbstractController
      * @Route("/category/add", name="add_category")
      * @return Response
      */
-    public function add(Request $request): Response
+    public function add(Request $request)
     {
-        $category = new Category();
-        $form = $this->createForm(CategoryType::class, $category);
-        $form->handleRequest($request);
+        $test = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findAll();
+        if (!$test) {
+            throw $this->createNotFoundException(
+                'Niet.'
+            );
+        }
 
-        return $this->render('category/index.html.twig', [
-            'category' => $category,
-            'form' => $form->createView()
+            $category = new Category();
+            $form = $this->createForm(CategoryType::class, $category);
+            $form->handleRequest($request);
+
+
+        if ($form->isSubmitted()) {
+            $data = $this->getDoctrine()->getManager();
+            $data->persist($category);
+            $data->flush();
+
+        }
+
+            return $this->render('category/index.html.twig', [
+                'category' => $category,
+                'test' => $test,
+                'form' => $form->createView()
             ]);
     }
 }
+
