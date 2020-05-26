@@ -5,9 +5,17 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProgramRepository")
+ * @UniqueEntity(
+ *     fields={"title"},
+ *     errorPath="title",
+ *     message="Ce titre existe déja"
+ * )
+ *
  */
 class Program
 {
@@ -20,6 +28,9 @@ class Program
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Dont let me empty pls !")
+     * @Assert\Length(max="255", maxMessage="the title of the program {{ value }} are to long, dont go over {{ limit }}
+     *  characters please !")
      */
     private $title;
 
@@ -30,6 +41,10 @@ class Program
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Regex(
+     *     "/plus belle la vie/",
+     *     match=false,
+     *     message="On parle de vrai séries ici")
      */
     private $poster;
 
