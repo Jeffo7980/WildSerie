@@ -7,4 +7,19 @@ $theme-colors:(
   'cardvue': #a4a5a3
 );
 
+.container-fluid{
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+}
+label{
+  text-align: left;
+}
+input{
+  display: block;
+}
+.required{
+  display: block;
+}
+
 @import "~bootstrap/scss/bootstrap";
