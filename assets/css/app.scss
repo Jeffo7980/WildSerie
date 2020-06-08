@@ -7,6 +7,8 @@ $theme-colors:(
   'cardvue': #a4a5a3
 );
 
+@import "~bootstrap/scss/bootstrap";
+
 .container-fluid{
   display: flex;
   justify-content: center;
@@ -22,4 +24,4 @@ input{
   display: block;
 }
 
-@import "~bootstrap/scss/bootstrap";
+

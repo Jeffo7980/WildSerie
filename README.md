@@ -15,3 +15,6 @@ https://www.loom.com/share/e31fca0b5f5f4b02a843e237b3d8df7a
 
 Lien vers la vidéo Quete 14
 https://www.loom.com/share/067bc8f4886e45daa2b5dd1be24535a6
+
+Lien vers la vidéo Quete 15
+https://www.loom.com/share/920644025ba745f7b86cdba33550821b
