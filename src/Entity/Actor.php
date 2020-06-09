@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ActorRepository;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ActorRepository")
@@ -24,7 +25,7 @@ class Actor
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Program", inversedBy="actors")
+     * @ORM\ManyToMany(targetEntity=Program::class, inversedBy="actors")
      */
     private $programs;
 

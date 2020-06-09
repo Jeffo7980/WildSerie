@@ -3,9 +3,10 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\EpisodeRepository;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\EpisodeRepository")
+ * @ORM\Entity(repositoryClass=EpisodeRepository::class)
  */
 class Episode
 {
@@ -32,7 +33,7 @@ class Episode
     private $synopsis;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Season", inversedBy="episodes")
+     * @ORM\ManyToOne(targetEntity=Season::class, inversedBy="episodes")
      * @ORM\JoinColumn(nullable=false)
      */
     private $season;

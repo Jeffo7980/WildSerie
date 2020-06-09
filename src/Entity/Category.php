@@ -6,6 +6,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use PhpParser\Node\Expr\Array_;
+use App\Repository\CategoryRepository;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
