@@ -7,9 +7,11 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Repository\ProgramRepository;
+
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ProgramRepository")
+ * @ORM\Entity(repositoryClass=ProgramRepository::class)
  * @UniqueEntity(
  *     fields={"title"},
  *     errorPath="title",
@@ -59,23 +61,9 @@ class Program
      */
     private $seasons;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $synopsis;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $country;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $year;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Actor", mappedBy="programs")
+     * @ORM\ManyToMany(targetEntity=Actor::class, mappedBy="programs")
      */
     private $actors;
 
@@ -165,42 +153,6 @@ class Program
                 $season->setProgram(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getSynopsis(): ?string
-    {
-        return $this->synopsis;
-    }
-
-    public function setSynopsis(string $synopsis): self
-    {
-        $this->synopsis = $synopsis;
-
-        return $this;
-    }
-
-    public function getCountry(): ?string
-    {
-        return $this->country;
-    }
-
-    public function setCountry(string $country): self
-    {
-        $this->country = $country;
-
-        return $this;
-    }
-
-    public function getYear(): ?int
-    {
-        return $this->year;
-    }
-
-    public function setYear(int $year): self
-    {
-        $this->year = $year;
 
         return $this;
     }
